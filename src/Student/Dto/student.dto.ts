@@ -6,6 +6,7 @@ export class createStudentDto {
 export class updateStudentDto {
     id: string;
     name: string;
+    teacher?: string;
 }
 
 export class findStudentDto {
@@ -16,4 +17,5 @@ export class findStudentDto {
 export class studentDto {
     id: string;
     name: string;
+    teacher?: string;
 }

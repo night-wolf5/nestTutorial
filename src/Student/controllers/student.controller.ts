@@ -8,7 +8,7 @@ import {
 } from '../Dto/student.dto';
 import { StudentService } from '../student.service';
 
-@Controller('students')
+@Controller('student')
 export default class StudentsController {
     constructor(private readonly studentService: StudentService) {}
 
@@ -30,6 +30,6 @@ export default class StudentsController {
 
     @Put()
     updateStudent(@Body() body: updateStudentDto): studentDto {
-        return 'Update Student';
+        return this.studentService.updateStudent(body);
     }
 }

@@ -4,6 +4,7 @@ import {
     createStudentDto,
     findStudentDto,
     studentDto,
+    updateStudentDto,
 } from './Dto/student.dto';
 import { v4 as uuid } from 'uuid';
 
@@ -23,7 +24,20 @@ export class StudentService {
 
     createStudent(payload: createStudentDto): studentDto {
         let newStudent = { id: uuid(), ...payload };
-        students.push(newStudent);
+        this.students.push(newStudent);
+        return newStudent;
+    }
+
+    updateStudent(payload: updateStudentDto): studentDto {
+        let newStudent: studentDto;
+        this.students = students.map((student) => {
+            if (student.id === payload.id) {
+                newStudent = { id: payload.id, ...payload };
+                return newStudent;
+            } else {
+                return student;
+            }
+        });
         return newStudent;
     }
 }
